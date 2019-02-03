@@ -1,5 +1,8 @@
 package sia.tacocloud.controller;
 
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import sia.tacocloud.domain.Ingredient;
 import sia.tacocloud.domain.Taco;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +16,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import sia.tacocloud.domain.Ingredient.Type;
+
+import javax.validation.Valid;
+
 /**
  * Created by bvasilenko on 01.02.2019.
  */
@@ -42,6 +48,28 @@ public class DesignTacoController {
         }
         model.addAttribute("design", new Taco());
         return "design";
+    }
+
+//    @PostMapping
+//    public String processDesign(Design design) {
+//// Save the taco design...
+//// We'll do this in chapter 3
+//        log.info("Processing design: " + design);
+//        return "redirect:/orders/current";
+//    }
+
+    //tag::processDesignValidated[]
+    @PostMapping
+    public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            return "design";
+        }
+
+        // Save the taco design...
+        // We'll do this in chapter 3
+        log.info("Processing design: " + design);
+
+        return "redirect:/orders/current";
     }
 
     private List<Ingredient> filterByType(
