@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @RequiredArgsConstructor
@@ -15,9 +14,14 @@ import javax.persistence.Id;
 public class Ingredient {
 
     @Id
+    @Column(name = "ID")
     private final String id;
     private final String name;
     private final Type type;
+
+    @ManyToOne(targetEntity = Taco.class)
+    @JoinColumn(name = "TACO_ID", referencedColumnName = "ID")
+    private Taco taco;
 
     public static enum Type {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
