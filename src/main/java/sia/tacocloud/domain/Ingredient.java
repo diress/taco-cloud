@@ -19,9 +19,8 @@ public class Ingredient {
     private final String name;
     private final Type type;
 
-    @ManyToOne(targetEntity = Taco.class)
-    @JoinColumn(name = "TACO_ID", referencedColumnName = "ID")
-    private Taco taco;
+//    @ManyToOne(targetEntity = Taco.class)
+//    private Taco taco;
 
     public static enum Type {
         WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
