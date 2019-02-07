@@ -19,3 +19,4 @@ insert into Ingredient (id, name, type)
 values ('SLSA', 'Salsa', 4);
 insert into Ingredient (id, name, type)
 values ('SRCR', 'Sour Cream', 4);
+

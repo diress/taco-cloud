@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").failureUrl("/login?error=true")
                 .usernameParameter("username")
                 .passwordParameter("password")
-
+                .successForwardUrl("/design")
 //                .and()
 //                .formLogin()
 //                .loginPage("/login")

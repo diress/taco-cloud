@@ -9,7 +9,8 @@ spring:
     properties:
       hibernate:
         show_sql: true
-        ddl-auto:
+        hbm2ddl:
+          auto: update
     h2:
       console:
         enabled:  true
